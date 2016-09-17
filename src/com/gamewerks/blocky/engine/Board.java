@@ -13,7 +13,7 @@ public class Board {
         well = new boolean[Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
     }
     
-    //changed the <= to < in comparing col and row
+    //changed the <= to < in comparing col and row (got help from Lex)
     public boolean isValidPosition(int row, int col) {
         return row >= 0 && row < well.length && col >= 0 && col < well[0].length;
     }

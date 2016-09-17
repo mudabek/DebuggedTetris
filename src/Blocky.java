@@ -24,15 +24,19 @@ public class Blocky {
         frame.pack();
         frame.setVisible(true);
         
+        // fixed so it goes left and right (got help from Linh the Legend Herself)
         frame.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 int code = e.getKeyCode();
                 if (code == e.VK_LEFT) {
                     game.setDirection(Direction.LEFT);
+                    game.processMovement();
                 } else if (code == e.VK_RIGHT) {
                     game.setDirection(Direction.RIGHT);
+                    game.processMovement();
                 }
             }
+            
             
             public void keyReleased(KeyEvent e) {
                 int code = e.getKeyCode();

@@ -13,8 +13,9 @@ public class Board {
         well = new boolean[Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
     }
     
+    //changed the <= to < in comparing col and row
     public boolean isValidPosition(int row, int col) {
-        return row >= 0 && row <= well.length && col >= 0 && col <= well[0].length;
+        return row >= 0 && row < well.length && col >= 0 && col < well[0].length;
     }
     
     public boolean collides(Piece p) {
@@ -27,8 +28,10 @@ public class Board {
             for (int col = 0; col < layout[row].length; col++) {
                 int wellCol = col + pos.col;
                 if (layout[row][col]) {
+                	//checks if piece is in gameboard
                     if (!isValidPosition(wellRow, wellCol)) {
                         return true;
+                    //checks if piece is colliding with another piece
                     } else if (well[wellRow][wellCol]) {
                         return true;
                     }

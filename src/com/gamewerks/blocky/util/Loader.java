@@ -12,7 +12,8 @@ public class Loader {
         boolean[][] rotation = new boolean[4][4];
         for (int row = 3; row >= 0; row--) {
             String line = in.nextLine();
-            for (int col = 0; col < 5; col++) {
+            //it was exceeding the column size
+            for (int col = 0; col < 4; col++) {
                 rotation[row][col] = line.charAt(col) == 'x';
             }
         }

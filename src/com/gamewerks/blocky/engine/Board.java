@@ -28,10 +28,9 @@ public class Board {
             for (int col = 0; col < layout[row].length; col++) {
                 int wellCol = col + pos.col;
                 if (layout[row][col]) {
-                	//checks if piece is in gameboard
-                    if (!isValidPosition(wellRow, wellCol)) {
+                	//adds layout.length and subtracts 1 from wellRow
+                    if (!isValidPosition(wellRow + layout.length - 1, wellCol)) {
                         return true;
-                    //checks if piece is colliding with another piece
                     } else if (well[wellRow][wellCol]) {
                         return true;
                     }

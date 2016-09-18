@@ -22,6 +22,7 @@ public class Piece {
     private PieceKind kind;
     private int orientation;
     private Position pos;
+    public Board board;
     
     public Piece(PieceKind kind, Position pos) {
         this.kind = kind;

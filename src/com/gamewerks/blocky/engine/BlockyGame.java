@@ -21,7 +21,7 @@ public class BlockyGame {
     
     private void trySpawnBlock() {
         if (activePiece == null) {
-        	// changed initial position of the piece to 2
+        	// changed initial position of the piece to 3
             activePiece = new Piece(Randomization.nextPiece(), new Position(3, Constants.BOARD_WIDTH / 2 - 2));
             if (board.collides(activePiece)) {
                 System.exit(0);
@@ -86,6 +86,10 @@ public class BlockyGame {
     public Piece getActivePiece() { return activePiece; }
     public void setDirection(Direction movement) { this.movement = movement; }
     public void rotatePiece(boolean dir) {
-    	activePiece.rotate(dir); 
+    	activePiece.rotate(dir);
+    	//fixed the rotation
+    	if (board.collides(activePiece)){
+    		activePiece.rotate(!dir);
+    	}
     	}
 }

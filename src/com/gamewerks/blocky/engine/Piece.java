@@ -39,15 +39,15 @@ public class Piece {
     }
     
     public boolean[][] getLayout() {
-        return ((boolean[][][]) ROTATION_DATA.get(kind))[orientation];
+    	return ((boolean[][][]) ROTATION_DATA.get(kind))[orientation];
     }
-    
+
     public void rotate(boolean dir) {
-        if (dir) {
-            orientation = (orientation + 1) % 4;
-        } else {
-            int k = orientation - 1;
-            orientation = k < 0 ? 3 : k;
-        }
+    	if (dir) {
+    		orientation = (orientation + 1) % 4;
+    	} else {
+    		int k = orientation - 1;
+    		orientation = k < 0 ? 3 : k;
+    	}
     }
 }

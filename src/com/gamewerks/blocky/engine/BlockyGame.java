@@ -22,7 +22,7 @@ public class BlockyGame {
     private void trySpawnBlock() {
         if (activePiece == null) {
         	// changed initial position of the piece to 2
-            activePiece = new Piece(Randomization.nextPiece(), new Position(7, Constants.BOARD_WIDTH / 2 - 2));
+            activePiece = new Piece(Randomization.nextPiece(), new Position(3, Constants.BOARD_WIDTH / 2 - 2));
             if (board.collides(activePiece)) {
                 System.exit(0);
             }
@@ -30,23 +30,26 @@ public class BlockyGame {
     }
     
     public void processMovement() {
-        Position nextPos;
-        switch(movement) {
-        case NONE:
-            nextPos = activePiece.getPosition();
-            break;
-        case LEFT:
-            nextPos = activePiece.getPosition().add(0, -1);
-            break;
-        case RIGHT:
-            nextPos = activePiece.getPosition().add(0, 1);
-            break;
-        default:
-            throw new IllegalStateException("Unrecognized direction: " + movement.name());
-        }
-        if (!board.collides(activePiece.getLayout(), nextPos)) {
-            activePiece.moveTo(nextPos);
-        }
+    	Position nextPos;
+    	//added check to make sure the program cannot move a nonexistent piece
+    	if (activePiece != null) {
+    		switch(movement) {
+    		case NONE:
+    			nextPos = activePiece.getPosition();
+    			break;
+    		case LEFT:
+    			nextPos = activePiece.getPosition().add(0, -1);
+    			break;
+    		case RIGHT:
+    			nextPos = activePiece.getPosition().add(0, 1);
+    			break;
+    		default:
+    			throw new IllegalStateException("Unrecognized direction: " + movement.name());
+    		}
+    		if (!board.collides(activePiece.getLayout(), nextPos)) {
+    			activePiece.moveTo(nextPos);
+    		}
+    	}
     }
     
     private void processGravity() {
